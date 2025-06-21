@@ -1,0 +1,178 @@
+# ADK Analytics Intake System
+
+A multi-agent analytics request intake system built with Google's Agent Development Kit (ADK). This application standardizes analytics request collection through structured conversations, ensuring complete requirements are gathered upfront.
+
+## Features
+
+- **Multi-agent architecture** with specialized agents for different request types
+- **Structured data collection** through guided conversations
+- **JSON output** for analytics team processing
+- **Validation tools** for data quality
+- **Web UI** for easy testing and demonstration
+
+## Agent Architecture
+
+```
+root_agent (coordinator)
+├── intake_agent (basic info collection)
+    ├── reports_agent (one-off reports)
+    ├── dashboard_agent (dashboard requests)
+    ├── updates_agent (existing report updates)
+    └── summary_agent (final processing & save)
+```
+
+## Installation & Setup
+
+1. **Install ADK**:
+   ```bash
+   pip install google-adk
+   ```
+
+2. **Create project structure**:
+   ```
+   analytics_intake/
+   ├── __init__.py
+   ├── agent.py
+   ├── .env
+   └── README.md
+   ```
+
+3. **Configure environment**:
+   Edit `.env` file with your Google API key:
+   ```bash
+   GOOGLE_GENAI_USE_VERTEXAI=False
+   GOOGLE_API_KEY=your-api-key
+   ```
+
+4. **Get your API key**:
+   Visit https://aistudio.google.com/app/apikey to get your Gemini API key
+
+## Usage
+
+### Web UI (Recommended for testing)
+```bash
+# From parent directory of analytics_intake/
+adk web
+```
+Open http://localhost:8000 and select "analytics_intake_coordinator" from the dropdown.
+
+### Command Line Interface
+```bash
+adk run analytics_intake
+```
+
+### API Server
+```bash
+adk api_server analytics_intake
+```
+
+## User Interaction Flows
+
+### Flow 1: One-off Report Request
+1. User: "I need a sales report"
+2. System collects: name, role, department, timeline
+3. Routes to `reports_agent`
+4. Collects: metrics, data sources, filters, output format
+5. `summary_agent` saves structured JSON
+
+### Flow 2: Dashboard Update
+1. User: "Update our revenue dashboard"
+2. System collects basic info
+3. Routes to `dashboard_agent` 
+4. Collects: dashboard details, changes needed, visualizations
+5. `summary_agent` saves structured JSON
+
+### Flow 3: Report Updates
+1. User: "Modify existing weekly sales report"
+2. System collects basic info
+3. Routes to `updates_agent`
+4. Collects: existing report details, specific changes
+5. `summary_agent` saves structured JSON
+
+## Output Format
+
+The system generates JSON files with this structure:
+
+```json
+{
+  "basic_info": {
+    "name": "John Smith",
+    "role": "Sales Manager", 
+    "department": "Sales",
+    "timeline": "End of week",
+    "collected_at": "2025-06-16T10:30:00"
+  },
+  "request_type": "reports",
+  "requirements": {
+    "purpose": "Monthly sales performance analysis",
+    "metrics": ["revenue", "conversion_rate", "lead_count"],
+    "data_sources": ["CRM", "web_analytics"],
+    "time_period": "Last 3 months",
+    "filters": "By sales region",
+    "output_format": "Excel with charts",
+    "audience": "Sales leadership team"
+  },
+  "metadata": {
+    "created_at": "2025-06-16T10:35:00",
+    "session_id": "session_123",
+    "status": "pending_review"
+  }
+}
+```
+
+## Tools & Functions
+
+- **save_analytics_request**: Saves collected data to timestamped JSON files
+- **validate_basic_info**: Validates required user information
+- **Agent delegation**: Automatic routing to appropriate specialist agents
+
+## Target Users
+
+- **Sales teams**: Revenue reports, pipeline analysis
+- **Editorial teams**: Content performance, engagement metrics  
+- **VPs/Executives**: Strategic dashboards, KPI monitoring
+
+## Development
+
+### Testing Individual Agents
+```python
+# Test specific agent behavior
+from analytics_intake.agent import reports_agent
+# Use adk web to interact with individual agents
+```
+
+### Adding New Agent Types
+1. Create new LlmAgent in `agent.py`
+2. Add to `intake_agent.sub_agents` list
+3. Update routing logic in `intake_agent.instruction`
+
+### Customizing Output Format
+Modify the `save_analytics_request` function to change JSON structure or add additional metadata.
+
+## Troubleshooting
+
+**Common Issues:**
+
+1. **API key errors**: Ensure your `GOOGLE_API_KEY` is valid and from https://aistudio.google.com/app/apikey
+2. **Model access**: Verify your API key has access to Gemini models
+3. **Port conflicts**: Use `adk web --port 8001` for alternative ports
+
+**Debug mode:**
+```bash
+adk web --debug
+```
+
+## Next Steps
+
+This is a foundational implementation. Consider adding:
+
+- Database persistence instead of JSON files
+- Integration with ticketing systems
+- Email notifications to analytics team
+- More sophisticated validation rules
+- Integration with existing analytics tools
+
+## Support
+
+For ADK-specific issues, see: https://google.github.io/adk-docs/
+For project questions, contact the analytics team.

@@ -1,0 +1,21 @@
+{
+  "format_changes": false,
+  "timeline_changes": false,
+  "filters_page_type": "Prospect Page / Account Page",
+  "timeline": "End of next week",
+  "requestor_name": "Darren Bluechock",
+  "dashboard_name": "PE daily user account dashboard",
+  "filters_user_role": "Administrative Users, Marketers",
+  "requestor_role": "Taxonomist",
+  "distribution_changes": false,
+  "data_sources_new": false,
+  "filters_actions": "No specific actions",
+  "requestor_department": "Product",
+  "notifications": "Notify current recipients",
+  "update_purpose": "Gain a more granular understanding of how different user types are using the Priori Engine to inform new feature development, specifically to understand if users are primarily using prospect pages versus account pages.",
+  "request_summary": "Darren Bluechock from the Product team has requested an update to the \"PE daily user account dashboard\" to gain a more granular understanding of user behavior and inform new feature development. The core purpose is to analyze how different user roles engage with specific page types within the Priori Engine. The update is requested by the end of next week with no changes to the existing format or distribution.\n\n*   **Goal:** To determine if key user segments (Administrative Users, Marketers) are primarily using prospect pages versus account pages.\n*   **Key Change:** Add new dashboard filters for `Page Type` (Prospect Page / Account Page) and `User Role`.\n*   **Business Impact:** The insights will directly influence the roadmap for new feature development by clarifying which areas of the product are most valuable to specific user types.\n\n**Level of Effort: Low.** The request involves adding filters based on existing data without altering the dashboard's core structure, format, or data sources.",
+  "metadata": {
+    "created_at": "2025-06-18T06:29:03.361529",
+    "status": "pending_review"
+  }
+}

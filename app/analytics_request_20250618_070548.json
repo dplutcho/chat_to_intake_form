@@ -1,0 +1,16 @@
+{
+  "output_format": "Excel spreadsheet",
+  "data_sources": "Priority Engine analytics, BigQuery, and Pendo (if applicable).",
+  "purpose": "Track active users on Priority Engine and identify trends over the last three months.",
+  "role": "Product Manager",
+  "key_metrics": "Active users (logins).",
+  "name": "Darren Plutchock",
+  "filters_segments": "Financial industry, with the ability to filter by other industries and market tax segments, plus user roles, regions, or product tiers.",
+  "timeline": "Next Thursday",
+  "department": "Product",
+  "request_summary": "Of course. Here is a clear and insightful summary of the analytics request:\n\nProduct Manager Darren Plutchock requires an analysis to track active user trends on the Priority Engine platform over the last three months, with a primary focus on the financial industry. The goal is to understand user engagement patterns and provide a flexible dataset for further exploration by the product team, delivered by next Thursday.\n\n*   **Core Metric:** The analysis will measure active users, defined specifically as user logins, over the past three months.\n*   **Segmentation:** The report must be filterable by industry (with a focus on Financial), market tax segments, user roles, regions, and product tiers.\n*   **Deliverable:** The final output is an Excel spreadsheet that combines and reconciles data from Priority Engine analytics, BigQuery, and potentially Pendo.\n\n**Level of Effort:** Medium. The request requires integrating data from up to three distinct sources and building a flexible, multi-filter spreadsheet, which adds complexity beyond a simple data pull.",
+  "metadata": {
+    "created_at": "2025-06-18T07:06:07.421037",
+    "status": "pending_review"
+  }
+}
